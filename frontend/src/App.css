@@ -3,6 +3,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Hide default cursor on desktop */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
 /* Custom animations */
 @keyframes slide-in-from-top-4 {
   from {
@@ -23,3 +30,18 @@ html {
 .slide-in-from-top-4 {
   animation-name: slide-in-from-top-4;
 }
+
+/* Glow effect */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
