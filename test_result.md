@@ -189,6 +189,18 @@ backend:
           agent: "testing"
           comment: "Backend server running successfully on configured URL. All API routes properly prefixed with /api. CORS middleware configured correctly. Server logs show all requests handled with 200 OK responses. No errors in backend logs."
 
+  - task: "Database optimization field exclusion"
+    implemented: true
+    working: true
+    file: "/app/backend/routes/portfolio.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "Database optimization verification completed successfully. All endpoints properly exclude _id, createdAt, updatedAt fields from responses. Contact endpoint also excludes isActive field. Dependency injection pattern working correctly. Created optimization_verification_test.py with 12 tests - all passed (100% success rate). Field exclusion working as expected."
+
 frontend:
   # Frontend testing not performed as per testing agent instructions
 
