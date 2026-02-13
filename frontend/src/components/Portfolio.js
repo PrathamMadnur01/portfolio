@@ -630,24 +630,24 @@ const Portfolio = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-purple-400/50 hover:bg-purple-500/10 hover:border-purple-400 text-foreground hover:text-foreground" asChild>
-                  <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="border-purple-400/50 hover:bg-purple-500/10 hover:border-purple-400" asChild>
+                  <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-foreground">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
                   </a>
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-cyan-400/50 hover:bg-cyan-500/10 hover:border-cyan-400 text-foreground hover:text-foreground" asChild>
-                  <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" className="border-cyan-400/50 hover:bg-cyan-500/10 hover:border-cyan-400" asChild>
+                  <a href={contactInfo.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-foreground">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
                   </a>
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-emerald-400/50 hover:bg-emerald-500/10 hover:border-emerald-400 text-foreground hover:text-foreground" asChild>
-                  <a href={contactInfo.resume} download>
+                <Button variant="outline" className="border-emerald-400/50 hover:bg-emerald-500/10 hover:border-emerald-400" asChild>
+                  <a href={contactInfo.resume} download className="text-foreground hover:text-foreground">
                     <FileText className="mr-2 h-4 w-4" />
                     Resume
                   </a>
