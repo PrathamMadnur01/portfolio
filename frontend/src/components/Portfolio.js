@@ -517,7 +517,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-cyan-500/10 rounded-3xl p-12 border border-purple-500/30 text-center overflow-hidden"
+            className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl p-12 border border-purple-500/30 text-center overflow-hidden"
           >
             {/* Background animation */}
             <motion.div
