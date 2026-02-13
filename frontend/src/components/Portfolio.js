@@ -139,7 +139,7 @@ const Portfolio = () => {
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Button 
                       onClick={() => scrollToSection('projects')} 
-                      className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white px-8 shadow-lg shadow-purple-500/50"
+                      className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white px-8 shadow-lg shadow-purple-500/50"
                     >
                       <Zap className="mr-2 h-4 w-4" />
                       View Projects
