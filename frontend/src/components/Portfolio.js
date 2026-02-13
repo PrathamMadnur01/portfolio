@@ -1,17 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Moon, Sun, Github, Linkedin, Mail, ExternalLink, FileText, Code, Database, Brain, ChevronDown, Terminal, Cpu, Zap } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
-import { projects, skills, experience, contactInfo } from '../mock';
+import api from '../services/api';
 import { Button } from './ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import CustomCursor from './CustomCursor';
 import ParticleBackground from './ParticleBackground';
+import LoadingSkeleton from './LoadingSkeleton';
 
 const Portfolio = () => {
   const { theme, toggleTheme } = useTheme();
   const [selectedProject, setSelectedProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // State for data
+  const [projects, setProjects] = useState([]);
+  const [skills, setSkills] = useState({});
+  const [experience, setExperience] = useState([]);
+  const [contactInfo, setContactInfo] = useState({});
+
+  useEffect(() => {
+    // Log page view
+    api.logPageView(window.location.pathname);
+    
+    // Fetch all data
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const [projectsData, skillsData, experienceData, contactData] = await Promise.all([
+          api.getProjects(),
+          api.getSkills(),
+          api.getExperience(),
+          api.getContact()
+        ]);
+        
+        setProjects(projectsData.projects || []);
+        setSkills(skillsData.skills || {});
+        setExperience(experienceData.experience || []);
+        setContactInfo(contactData);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching data:', err);
+        setError('Failed to load portfolio data. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchData();
+  }, []);
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
