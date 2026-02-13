@@ -110,7 +110,7 @@ const Portfolio = () => {
                 
                 <motion.h1 
                   variants={fadeInUp}
-                  className="text-7xl font-bold font-mono tracking-tight bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
+                  className="text-7xl font-bold font-mono tracking-tight bg-gradient-to-r from-purple-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent"
                 >
                   Pratham M.
                 </motion.h1>
