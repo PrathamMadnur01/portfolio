@@ -1,28 +1,21 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 from models.project import Project
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
 
 router = APIRouter(prefix="/portfolio", tags=["portfolio"])
 
-# Get database
+# Dependency to get database from server
 def get_db():
-    mongo_url = os.environ['MONGO_URL']
-    client = AsyncIOMotorClient(mongo_url)
-    return client[os.environ['DB_NAME']]
+    from server import db
+    return db
 
 @router.get("/projects")
-async def get_projects():
+async def get_projects(db = Depends(get_db)):
     """Get all active projects"""
-    db = get_db()
-    projects = await db.projects.find({"isActive": True}).sort("order", 1).to_list(100)
-    
-    # Remove MongoDB _id field
-    for project in projects:
-        project.pop('_id', None)
-        project.pop('createdAt', None)
-        project.pop('updatedAt', None)
+    projects = await db.projects.find(
+        {"isActive": True},
+        {"_id": 0, "createdAt": 0, "updatedAt": 0}
+    ).sort("order", 1).to_list(100)
     
     return {
         "projects": projects,
@@ -30,25 +23,25 @@ async def get_projects():
     }
 
 @router.get("/projects/{project_id}")
-async def get_project(project_id: int):
+async def get_project(project_id: int, db = Depends(get_db)):
     """Get single project by ID"""
-    db = get_db()
-    project = await db.projects.find_one({"id": project_id, "isActive": True})
+    project = await db.projects.find_one(
+        {"id": project_id, "isActive": True},
+        {"_id": 0, "createdAt": 0, "updatedAt": 0}
+    )
     
     if not project:
         raise HTTPException(status_code=404, detail="Project not found")
     
-    project.pop('_id', None)
-    project.pop('createdAt', None)
-    project.pop('updatedAt', None)
-    
     return project
 
 @router.get("/skills")
-async def get_skills():
+async def get_skills(db = Depends(get_db)):
     """Get all skills grouped by category"""
-    db = get_db()
-    skills_list = await db.skills.find({"isActive": True}).sort("order", 1).to_list(100)
+    skills_list = await db.skills.find(
+        {"isActive": True},
+        {"_id": 0}
+    ).sort("order", 1).to_list(100)
     
     # Convert to grouped format
     skills_dict = {}
@@ -58,14 +51,12 @@ async def get_skills():
     return {"skills": skills_dict}
 
 @router.get("/experience")
-async def get_experience():
+async def get_experience(db = Depends(get_db)):
     """Get all experience/highlights"""
-    db = get_db()
-    experience = await db.experience.find({"isActive": True}).sort("order", 1).to_list(100)
-    
-    # Remove MongoDB _id field
-    for exp in experience:
-        exp.pop('_id', None)
+    experience = await db.experience.find(
+        {"isActive": True},
+        {"_id": 0}
+    ).sort("order", 1).to_list(100)
     
     return {
         "experience": experience,
@@ -73,15 +64,14 @@ async def get_experience():
     }
 
 @router.get("/contact")
-async def get_contact():
+async def get_contact(db = Depends(get_db)):
     """Get contact information"""
-    db = get_db()
-    contact = await db.contact_info.find_one({"isActive": True})
+    contact = await db.contact_info.find_one(
+        {"isActive": True},
+        {"_id": 0, "isActive": 0}
+    )
     
     if not contact:
         raise HTTPException(status_code=404, detail="Contact info not found")
-    
-    contact.pop('_id', None)
-    contact.pop('isActive', None)
     
     return contact
