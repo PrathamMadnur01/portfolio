@@ -582,7 +582,7 @@ const Portfolio = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-pink-400/50 hover:bg-pink-500/10 hover:border-pink-400" asChild>
+                <Button variant="outline" className="border-emerald-400/50 hover:bg-emerald-500/10 hover:border-emerald-400" asChild>
                   <a href={contactInfo.resume} download>
                     <FileText className="mr-2 h-4 w-4" />
                     Resume
