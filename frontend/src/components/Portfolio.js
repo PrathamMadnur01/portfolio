@@ -433,7 +433,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold mb-12 font-mono bg-gradient-to-r from-cyan-400 to-green-400 bg-clip-text text-transparent"
+            className="text-5xl font-bold mb-12 font-mono bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent"
           >
             {'<Skills />'}
           </motion.h2>
