@@ -13,7 +13,7 @@ def get_db():
 async def log_pageview(pageview: PageView, request: Request, db = Depends(get_db)):
     """Log page view for analytics"""
     # Add IP address from request
-    pageview_data = pageview.dict()
+    pageview_data = pageview.model_dump()
     pageview_data['ip'] = request.client.host if request.client else None
     pageview_data['timestamp'] = datetime.utcnow()
     
@@ -24,8 +24,17 @@ async def log_pageview(pageview: PageView, request: Request, db = Depends(get_db
 @router.get("/stats")
 async def get_stats(db = Depends(get_db)):
     """Get basic analytics stats"""
-    total_views = await db.pageviews.count_documents({})
-    unique_paths = await db.pageviews.distinct("path")
+    # Use estimated count for better performance
+    total_views = await db.pageviews.estimated_document_count()
+    
+    # Use aggregation with limit for unique paths
+    pipeline = [
+        {"$group": {"_id": "$path"}},
+        {"$limit": 100},
+        {"$project": {"_id": 0, "path": "$_id"}}
+    ]
+    unique_paths_cursor = db.pageviews.aggregate(pipeline)
+    unique_paths = [doc["path"] async for doc in unique_paths_cursor]
     
     return {
         "total_views": total_views,
