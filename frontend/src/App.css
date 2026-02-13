@@ -1,1 +1,25 @@
-/* Smooth scrolling */\nhtml {\n  scroll-behavior: smooth;\n}\n\n/* Custom animations */\n@keyframes slide-in-from-top-4 {\n  from {\n    transform: translateY(-1rem);\n    opacity: 0;\n  }\n  to {\n    transform: translateY(0);\n    opacity: 1;\n  }\n}\n\n.animate-in {\n  animation-duration: 0.3s;\n  animation-fill-mode: both;\n}\n\n.slide-in-from-top-4 {\n  animation-name: slide-in-from-top-4;\n}
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+@keyframes slide-in-from-top-4 {
+  from {
+    transform: translateY(-1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation-duration: 0.3s;
+  animation-fill-mode: both;
+}
+
+.slide-in-from-top-4 {
+  animation-name: slide-in-from-top-4;
+}
