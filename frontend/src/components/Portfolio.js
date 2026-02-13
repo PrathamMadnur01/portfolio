@@ -231,7 +231,7 @@ const Portfolio = () => {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-bold mb-8 font-mono bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            className="text-5xl font-bold mb-8 font-mono bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent"
           >
             {'<About />'}
           </motion.h2>
