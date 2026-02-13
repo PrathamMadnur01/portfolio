@@ -449,7 +449,7 @@ const Portfolio = () => {
               >
                 <Card className="backdrop-blur-sm bg-card/50 border-purple-500/20 hover:border-purple-500/40 transition-all duration-300 h-full">
                   <CardHeader>
-                    <CardTitle className="text-lg bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    <CardTitle className="text-lg bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
                       {category}
                     </CardTitle>
                   </CardHeader>
