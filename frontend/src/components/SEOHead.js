@@ -70,9 +70,9 @@ const SEOHead = () => {
       <meta property="twitter:description" content={description} />
 
       {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{
+        __html: JSON.stringify(structuredData)
+      }} />
 
       {/* Additional SEO */}
       <meta name="theme-color" content="#8B5CF6" />
