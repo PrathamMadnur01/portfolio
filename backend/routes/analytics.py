@@ -1,22 +1,17 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, Depends
 from models.analytics import PageView
-from motor.motor_asyncio import AsyncIOMotorClient
-import os
 from datetime import datetime
 
 router = APIRouter(prefix="/analytics", tags=["analytics"])
 
-# Get database
+# Dependency to get database from server
 def get_db():
-    mongo_url = os.environ['MONGO_URL']
-    client = AsyncIOMotorClient(mongo_url)
-    return client[os.environ['DB_NAME']]
+    from server import db
+    return db
 
 @router.post("/pageview")
-async def log_pageview(pageview: PageView, request: Request):
+async def log_pageview(pageview: PageView, request: Request, db = Depends(get_db)):
     """Log page view for analytics"""
-    db = get_db()
-    
     # Add IP address from request
     pageview_data = pageview.dict()
     pageview_data['ip'] = request.client.host if request.client else None
@@ -27,10 +22,8 @@ async def log_pageview(pageview: PageView, request: Request):
     return {"success": True, "message": "Page view logged"}
 
 @router.get("/stats")
-async def get_stats():
+async def get_stats(db = Depends(get_db)):
     """Get basic analytics stats"""
-    db = get_db()
-    
     total_views = await db.pageviews.count_documents({})
     unique_paths = await db.pageviews.distinct("path")
     
