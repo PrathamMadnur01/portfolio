@@ -622,7 +622,7 @@ const Portfolio = () => {
               className="flex flex-wrap justify-center gap-4"
             >
               <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.95 }}>
-                <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white shadow-lg shadow-purple-500/50" asChild>
+                <Button className="bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-600 hover:to-cyan-600 text-white dark:text-white shadow-lg shadow-purple-500/50" asChild>
                   <a href={`mailto:${contactInfo.email}`}>
                     <Mail className="mr-2 h-4 w-4" />
                     Email Me
@@ -630,7 +630,7 @@ const Portfolio = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-purple-400/50 hover:bg-purple-500/10 hover:border-purple-400" asChild>
+                <Button variant="outline" className="border-purple-400/50 hover:bg-purple-500/10 hover:border-purple-400 text-foreground" asChild>
                   <a href={contactInfo.linkedin} target="_blank" rel="noopener noreferrer">
                     <Linkedin className="mr-2 h-4 w-4" />
                     LinkedIn
@@ -638,7 +638,7 @@ const Portfolio = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: 5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-cyan-400/50 hover:bg-cyan-500/10 hover:border-cyan-400" asChild>
+                <Button variant="outline" className="border-cyan-400/50 hover:bg-cyan-500/10 hover:border-cyan-400 text-foreground" asChild>
                   <a href={contactInfo.github} target="_blank" rel="noopener noreferrer">
                     <Github className="mr-2 h-4 w-4" />
                     GitHub
@@ -646,7 +646,7 @@ const Portfolio = () => {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.1, rotate: -5 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="outline" className="border-emerald-400/50 hover:bg-emerald-500/10 hover:border-emerald-400" asChild>
+                <Button variant="outline" className="border-emerald-400/50 hover:bg-emerald-500/10 hover:border-emerald-400 text-foreground" asChild>
                   <a href={contactInfo.resume} download>
                     <FileText className="mr-2 h-4 w-4" />
                     Resume
