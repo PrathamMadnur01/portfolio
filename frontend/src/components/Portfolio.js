@@ -166,11 +166,11 @@ const Portfolio = () => {
                   variants={fadeInUp}
                   className="font-mono text-sm text-muted-foreground/50 mt-8"
                 >
-                  <span className="text-purple-400">const</span> enthusiasm = <span className="text-pink-400">"∞"</span>;
+                  <span className="text-purple-400">const</span> enthusiasm = <span className="text-emerald-400">"∞"</span>;
                   <br />
                   <span className="text-purple-400">while</span>(true) {'{'} 
                   <span className="text-cyan-400"> code()</span>; 
-                  <span className="text-pink-400"> learn()</span>; 
+                  <span className="text-emerald-400"> learn()</span>; 
                   <span className="text-green-400"> build()</span>; {'}'}
                 </motion.div>
               </div>
