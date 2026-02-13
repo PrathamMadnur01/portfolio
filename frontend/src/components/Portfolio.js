@@ -95,7 +95,7 @@ const Portfolio = () => {
             {/* Glassmorphism card */}
             <motion.div 
               variants={fadeInUp}
-              className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-cyan-500/10 rounded-3xl p-12 border border-purple-500/30 shadow-2xl shadow-purple-500/20"
+              className="relative backdrop-blur-2xl bg-gradient-to-br from-purple-500/10 via-cyan-500/10 to-emerald-500/10 rounded-3xl p-12 border border-purple-500/30 shadow-2xl shadow-purple-500/20"
             >
               <div className="space-y-6">
                 <motion.div 
