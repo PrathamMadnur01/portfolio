@@ -46,7 +46,7 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            className="font-mono text-lg font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent"
+            className="font-mono text-lg font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent"
           >
             {'<PRATHAM_M />'}
           </motion.div>
