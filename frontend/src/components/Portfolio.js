@@ -264,9 +264,9 @@ const Portfolio = () => {
                     </motion.div>
                     <motion.div 
                       whileHover={{ scale: 1.05, x: 10 }}
-                      className="flex items-center gap-3 p-3 rounded-lg bg-pink-500/5 border border-pink-500/20"
+                      className="flex items-center gap-3 p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/20"
                     >
-                      <Code className="h-5 w-5 text-pink-400" />
+                      <Code className="h-5 w-5 text-emerald-400" />
                       <span>LLM tool use & function calling</span>
                     </motion.div>
                     <motion.div 
