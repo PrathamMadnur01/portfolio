@@ -69,6 +69,10 @@ async def get_status_checks():
     
     return status_checks
 
+# Include portfolio and analytics routes
+api_router.include_router(portfolio.router)
+api_router.include_router(analytics.router)
+
 # Include the router in the main app
 app.include_router(api_router)
 
