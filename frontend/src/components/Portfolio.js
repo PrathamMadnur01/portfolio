@@ -57,6 +57,30 @@ const Portfolio = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  // Show loading skeleton
+  if (loading) {
+    return <LoadingSkeleton />;
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-purple-500/5">
+        <Card className="max-w-md backdrop-blur-sm bg-card/50 border-purple-500/20">
+          <CardHeader>
+            <CardTitle className="text-destructive">Error Loading Portfolio</CardTitle>
+            <CardDescription>{error}</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button onClick={() => window.location.reload()}>
+              Reload Page
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   const fadeInUp = {
     initial: { opacity: 0, y: 40 },
     animate: { opacity: 1, y: 0 },
